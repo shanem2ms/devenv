@@ -13,10 +13,6 @@ echo //////////////////////////////////////////////////////////
 echo .
 echo Type "build" to build
 
-SET KUBECONFIG=C:\Users\wsiadmin\.bluemix\plugins\container-service\clusters\dmserver\kube-config-wdc04-dmserver.yml
-
-
-
 :getHomeRoot
 FOR /F "tokens=* USEBACKQ" %%F IN (`cd`) DO (
 SET var=%%F
@@ -31,7 +27,7 @@ goto :EOF
 
 :LAST_FOLDER	
 if "%HOMEROOT%" == "" (set HOMEROOT=%1) else (set HOMEROOT=%HOMEROOT%\%1)
-if /I "%1"=="homep4" (
+if /I "%1"=="devenv" (
     goto :ENDPRINT
 )
 
@@ -41,7 +37,7 @@ goto :LAST_FOLDER
 
 :ENDPRINT
 
-set PATH=%PATH%;%HOMEROOT%\vcpkg
+set PATH=%PATH%;%HOMEROOT%
 call "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat"
 
 EXIT /B 0
